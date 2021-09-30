@@ -6,6 +6,7 @@ use App\Models\Contact;
 use App\Notifications\NewContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Nexmo\Laravel\Facade\Nexmo;
 use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
@@ -35,9 +36,13 @@ class ContactController extends Controller
 
 
         Notification::route('mail', config('mail.from.address'))
-            ->route('nexmo', '5555555555')
-            ->route('slack', 'https://hooks.slack.com/services/...')
             ->notify(new NewContact($contact));
+        Nexmo::message()->send([
+            'to' => $this->contact->phone,
+            'from' => 'sender',
+            'text' => $this->contact->message,
+
+        ]);
 
         if ($contact) {
             return view('contact');

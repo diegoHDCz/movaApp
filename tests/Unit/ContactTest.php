@@ -15,7 +15,8 @@ class ContactTest extends TestCase
         $expected = [
             'name',
             'email',
-            'message'
+            'message',
+            'phone'
         ];
 
         $arrayCompared = array_diff($expected, $user->getFillable());

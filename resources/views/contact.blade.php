@@ -37,6 +37,12 @@
                     @error('message')
                     <div>{{ $message }}</div>
                     @enderror
+                    <label for="phone">Email</label>
+                    <input id="phone" name="phone" type="phone" tabindex="2" placeholder="55 45 9999999"
+                           value="{{old('phone')}}">
+                    @error('phone')
+                    <div>{{ $message }}</div>
+                    @enderror
 
                     <button class="button button_primary" type="submit">Enviar mensagem</button>
                 </form>

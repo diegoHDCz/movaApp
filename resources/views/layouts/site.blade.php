@@ -71,54 +71,7 @@
 
 @yield('content')
 
-<footer class="main_footer">
-    <div class="dots_pattern"></div>
-    <div class="main-wrapper flex-container">
-        <div class="quality-badge">
-            <p>Cur omnia mori? </p>
-            <p>Ubi est barbatus zelus? </p>
-        </div>
-        <ul>
-            <li class="footer__links">
-                <h4 class="title-small">Redes Sociais</h4>
 
-                <a href=" https://www.facebook.com/diego.czajka/" target="_blank">Facebook</a>
-
-            </li>
-            <li class="footer__links">
-                <h4 class="title-small">Empresa</h4>
-
-            </li>
-            <li class="footer__links">
-                <h4 class="title-small">Contatos</h4>
-                <a title="Clique no número do telefone para ligar" href="tel:16999999999">Telefone</a>
-                <a title="Clique no email para enviar email automatico" href="mailto:contato@beerandcode.com
-                .br">Email</a>
-            </li>
-        </ul>
-    </div>
-</footer>
-<section class="sub__footer">
-    <div class="main-wrapper flex-container">
-        <a href="#"><img src="{{asset('images/Lock-icon.svg')}}">CMS</a>
-        <p>Hercle, bursa bassus!. Cum lacta congregabo, omnes tataes captis velox, teres abactuses. </p>
-        <a href="http://mmpx.com.br/" target="_blank">Deisgn by <strong>MMPX</strong></a>
-    </div>
-</section>
-
-</body>
-
-
-<!-- Scripts -->
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--}}
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="{{asset('lightbox/js/lightbox.js')}}"></script>
-
-@toastr_js
-@toastr_render
 
 <script>
     $("#toggle").click(function () {
