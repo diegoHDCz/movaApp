@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
 {
+    public function __construct(Contact $contact)
+    {
+        $this->contact = $contact;
+    }
+
     /**
      * Display a listing of the resource.
      *
