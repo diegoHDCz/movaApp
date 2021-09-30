@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Notifications\NewContact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
 {
@@ -13,18 +17,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('contact');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,51 +31,18 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $contact = Contact::create($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        Notification::route('mail', config('mail.from.address'))
+            ->route('nexmo', '5555555555')
+            ->route('slack', 'https://hooks.slack.com/services/...')
+            ->notify(new NewContact($contact));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if ($contact) {
+            return view('contact');
+        } else {
+            Response::HTTP_BAD_REQUEST;
+        }
     }
 }
